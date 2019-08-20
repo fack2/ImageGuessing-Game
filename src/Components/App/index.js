@@ -1,7 +1,7 @@
 import React from "react";
-
+import Main from '../Main/index'
 const App = () => {
-	return <p>Component rendering</p>;
+	return <Main/>
 };
 
 export default App;
