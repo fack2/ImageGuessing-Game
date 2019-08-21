@@ -11,21 +11,21 @@ class Main extends Component {
 		disableStartButton: false,
 		disableTryButton: true
 	};
-
-	countDown = () => {
+	start = () => {
 		this.setState(prevState => ({
 			disableStartButton: !prevState.disableStartButton,
 			disableTryButton: !prevState.disableTryButton
 		}));
-		const timer = () => {
-			const { timer } = this.state;
-			if (timer > 0) {
-				this.setState(prevState => ({
-					timer: prevState.timer - 1
-				}));
-			}
-		};
-		setInterval(timer, 100);
+
+		setInterval(this.countDown, 100);
+	};
+	countDown = () => {
+		const { timer } = this.state;
+		if (timer > 0) {
+			this.setState(prevState => ({
+				timer: prevState.timer - 1
+			}));
+		}
 	};
 
 	compareInputWithAnswer = () => {
@@ -73,7 +73,7 @@ class Main extends Component {
 				</button>
 				<button
 					type="button"
-					onClick={this.countDown}
+					onClick={this.start}
 					disabled={this.state.disableStartButton}
 				>
 					Start
