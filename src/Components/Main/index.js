@@ -7,19 +7,25 @@ class Main extends Component {
 		timer: 60,
 		currentImg: data[0].img,
 		currentName: data[0].name,
-		answer: ""
+		answer: "",
+		disableStartButton: false,
+		disableTryButton: true
 	};
 
 	countDown = () => {
-		this.setState(() => {
-			this.timer = setInterval(this.click, 1000);
-		});
-	};
-
-	click = () => {
-		this.setState(({ timer }) => {
-			return { timer: timer - 1 };
-		});
+		this.setState(prevState => ({
+			disableStartButton: !prevState.disableStartButton,
+			disableTryButton: !prevState.disableTryButton
+		}));
+		const timer = () => {
+			const { timer } = this.state;
+			if (timer > 0) {
+				this.setState(prevState => ({
+					timer: prevState.timer - 1
+				}));
+			}
+		};
+		setInterval(timer, 100);
 	};
 
 	compare = () => {
@@ -58,10 +64,18 @@ class Main extends Component {
 					value={this.state.answer}
 					placeholder="Enter the name here !!"
 				/>
-				<button type="button" onClick={this.compare}>
+				<button
+					type="button"
+					onClick={this.compare}
+					disabled={this.state.disableTryButton}
+				>
 					Try
 				</button>
-				<button type="button" onClick={this.countDown}>
+				<button
+					type="button"
+					onClick={this.countDown}
+					disabled={this.state.disableStartButton}
+				>
 					Start
 				</button>
 			</div>
