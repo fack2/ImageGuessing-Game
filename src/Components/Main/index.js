@@ -28,7 +28,7 @@ class Main extends Component {
 		setInterval(timer, 100);
 	};
 
-	compare = () => {
+	compareInputWithAnswer = () => {
 		const { currentName, answer } = this.state;
 		if (currentName === answer) {
 			this.setState(prevState => ({
@@ -66,7 +66,7 @@ class Main extends Component {
 				/>
 				<button
 					type="button"
-					onClick={this.compare}
+					onClick={this.compareInputWithAnswer}
 					disabled={this.state.disableTryButton}
 				>
 					Try
