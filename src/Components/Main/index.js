@@ -12,11 +12,11 @@ class Main extends Component {
 
 	countDown = () => {
 		this.setState(() => {
-			this.timer = setInterval(this.tick, 1000);
+			this.timer = setInterval(this.click, 1000);
 		});
 	};
 
-	tick = () => {
+	click = () => {
 		this.setState(({ timer }) => {
 			return { timer: timer - 1 };
 		});
