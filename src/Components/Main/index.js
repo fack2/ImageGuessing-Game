@@ -11,21 +11,22 @@ class Main extends Component {
   };
 
   compare = () => {
-    const { currentName, answer, score } = this.state;
-    if (currentName === answer) {
-      const scoreAddOne = score + 1;
-      this.setState({
-        score: scoreAddOne,
-        currentName: data[scoreAddOne].name,
-        currentImg: data[scoreAddOne].img,
-        answer: ""
-      });
-    }
+      const { currentName, answer } = this.state;
+              if (currentName === answer) {
+        this.setState(prevState => ({
+          score: prevState.score + 1,
+          currentName: data[prevState.score + 1].name,
+          currentImg: data[prevState.score + 1].img,
+          answer: "",
+        }));
+      }
+    
   };
-  updateUserAnswer = event => {
+
+  updateUserAnswer = event =>{
     const { value } = event.target;
-    this.setState({ answer: value });
-  };
+    this.setState({ answer: value })
+  }
 
   render() {
     return (
@@ -46,9 +47,7 @@ class Main extends Component {
           value={this.state.answer}
           placeholder="Enter the name here !!"
         />
-        <button type="button" onClick={this.compare}>
-          Try
-        </button>
+        <button type="button" onClick={this.compare}>Try</button>
       </div>
     );
   }
