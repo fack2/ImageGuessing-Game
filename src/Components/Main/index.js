@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import data from "../../data";
-
+import './style.css';
 class Main extends Component {
 	state = {
 		timer: 60,
@@ -16,7 +16,7 @@ class Main extends Component {
 			disableTryButton: !prevState.disableTryButton
 		}));
 
-		setInterval(this.countDown, 1000);
+		setInterval(this.countDown, 10);
 	};
 	countDown = () => {
 		const { timer } = this.state;
@@ -74,7 +74,7 @@ class Main extends Component {
 						/>
 					</label>
 				</div>
-				<img className="mainImage" src={this.state.currentImg} alt="" />
+				<img className="mainImage" src={this.state.currentImg} alt="main Image" />
 				<input
 					className="answer"
 					onChange={this.updateUserAnswer}

@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import "./result.css";
 
-class Result extends Component {
-	render() {
+const Result =({score,})=>{
 		return (
 			<div className = "resultDiv">
-				{this.props.score === 10 ? (
+				{score === 10 ? (
 					<div>
 						<h1 className="won">You Win!!</h1>
 						<img
@@ -22,10 +21,10 @@ class Result extends Component {
 						/>
 					</div>
 				)}
-				<p className = "resultScore">{this.props.score}</p>
+				<p className = "resultScore">{score}</p>
 			</div>
 		);
-	}
+	
 }
 
 export default Result;
