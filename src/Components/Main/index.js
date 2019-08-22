@@ -32,7 +32,7 @@ class Main extends Component {
 	compareInputWithAnswer = () => {
 		const { currentName, answer } = this.state;
 		if (currentName === answer) {
-			if (this.props.score + 1 === 10) {
+			if (this.props.score + 1 === 11) {
 				this.props.triggerGameOver();
 			} else {
 				this.props.increaseScore();
