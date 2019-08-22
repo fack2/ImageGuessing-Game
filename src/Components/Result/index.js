@@ -1,7 +1,7 @@
 import React from "react";
 import "./result.css";
 
-const Result =({score,})=>{
+const Result =({score})=>{
 		return (
 			<div className = "resultDiv">
 				{score === 10 ? (

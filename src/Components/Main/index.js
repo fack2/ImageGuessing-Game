@@ -16,7 +16,7 @@ class Main extends Component {
 			disableTryButton: !prevState.disableTryButton
 		}));
 
-		setInterval(this.countDown, 10);
+		setInterval(this.countDown, 1000);
 	};
 	countDown = () => {
 		const { timer } = this.state;
