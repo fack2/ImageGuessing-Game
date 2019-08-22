@@ -32,7 +32,7 @@ class Main extends Component {
 	compareInputWithAnswer = () => {
 		const { currentName, answer } = this.state;
 		if (currentName === answer) {
-			if (this.props.score + 1 === 10) {
+			if (this.props.score + 1 === 11) {
 				this.props.triggerGameOver();
 			} else {
 				this.props.increaseScore();
@@ -52,24 +52,28 @@ class Main extends Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Guess what's in the picture</h1>
-				<label htmlFor="timer">
+			<div className="main">
+				<h2 className="w3-text-orange">Guess what's in the picture</h2>
+				<div className="output">
+				<label className="w3-text-blue"  htmlFor="timer">
 					Timer
-					<input type="text" id="timer" value={this.state.timer} />
+					<input className="timer" type="text" id="timer" value={this.state.timer} />
 				</label>
-				<label htmlFor="score">
+				<label className="w3-text-blue"  htmlFor="score">
 					Score
-					<input type="text" id="score" value={this.props.score} />
+					<input className="score"  type="text" id="score" value={this.props.score} />
 				</label>
+				</div>
 				<img src={this.state.currentImg} alt="" />
 				<input
+				className="answer"
 					onChange={this.updateUserAnswer}
 					type="text"
 					value={this.state.answer}
 					placeholder="Enter the name here !!"
 				/>
 				<button
+				className="w3-btn w3-blue" 
 					type="button"
 					onClick={this.compareInputWithAnswer}
 					disabled={this.state.disableTryButton}
@@ -77,6 +81,7 @@ class Main extends Component {
 					Try
 				</button>
 				<button
+				className="w3-btn w3-green" 
 					type="button"
 					onClick={this.start}
 					disabled={this.state.disableStartButton}

@@ -1,0 +1,46 @@
+img {
+  width: 99vw;
+  height: 42vh;
+  margin: 2px;
+  border-radius: 10px;
+  opacity: 0.25;
+  filter: alpha(opacity=50);
+}
+h2 {
+  text-align: center;
+  box-shadow: 0 0 0 10px hsla(261, 100%, 50%, 0.29),
+    0 0 0 15px hsl(290, 20%, 77%);
+  border-radius: 22px;
+  padding: 0px 70px;
+  margin: 20px 24px;
+  font-size: 1.25em;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.output {
+  display: flex;
+  justify-content: space-around;
+}
+input[type="text"] {
+  border-radius: 10px;
+  color: rgb(225, 65, 100);
+}
+.timer,
+.score {
+  width: 6vw;
+  margin: 5px;
+  text-align: center;
+  border: gainsboro solid 2px;
+}
+.answer {
+  padding-left: 3px;
+  border: gainsboro solid 2px;
+  width: 99vw;
+  margin: auto;
+}
+button {
+  border-radius: 10px;
+}

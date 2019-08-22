@@ -54,6 +54,13 @@ const data = [
       img:
         "http://www.dhanjibhaiambawala.com/wp-content/uploads/2017/10/cherry-fruits.jpg",
       name: "cherry"
+    
+    },
+    {
+      id: 11,
+      img:
+        "https://cdn2.stylecraze.com/wp-content/uploads/2014/07/Is-It-True-That-Eating-Too-Many-Grapes-Causes-Side-Effects.jpg",
+      name: "grapes"
     }
   ];
   
