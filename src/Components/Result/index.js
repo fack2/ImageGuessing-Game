@@ -1,4 +1,13 @@
-// import React, { Component } from "react";
-// import { clearScreenDown } from "readline";
+import React, { Component } from "react";
+class Result extends Component {
+	render() {
+		return (
+			<div>
+				{this.props.score === 10 ? <h1>You Win!</h1> : <h1>You Lose</h1>}
+				<p>{this.props.score}</p>
+			</div>
+		);
+	}
+}
 
-// class 
+export default Result;

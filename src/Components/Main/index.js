@@ -3,7 +3,6 @@ import data from "../../data";
 
 class Main extends Component {
 	state = {
-		score: 0,
 		timer: 60,
 		currentImg: data[0].img,
 		currentName: data[0].name,
@@ -17,7 +16,7 @@ class Main extends Component {
 			disableTryButton: !prevState.disableTryButton
 		}));
 
-		setInterval(this.countDown, 100);
+		setInterval(this.countDown, 1000);
 	};
 	countDown = () => {
 		const { timer } = this.state;
@@ -25,18 +24,24 @@ class Main extends Component {
 			this.setState(prevState => ({
 				timer: prevState.timer - 1
 			}));
+		} else {
+			this.props.triggerGameOver();
 		}
 	};
 
 	compareInputWithAnswer = () => {
 		const { currentName, answer } = this.state;
 		if (currentName === answer) {
-			this.setState(prevState => ({
-				score: prevState.score + 1,
-				currentName: data[prevState.score + 1].name,
-				currentImg: data[prevState.score + 1].img,
-				answer: ""
-			}));
+			if (this.props.score + 1 === 10) {
+				this.props.triggerGameOver();
+			} else {
+				this.props.increaseScore();
+				this.setState({
+					currentName: data[this.props.score + 1].name,
+					currentImg: data[this.props.score + 1].img,
+					answer: ""
+				});
+			}
 		}
 	};
 
@@ -47,24 +52,28 @@ class Main extends Component {
 
 	render() {
 		return (
-			<div>
-				<h1>Guess what's in the picture</h1>
-				<label htmlFor="timer">
+			<div className="main">
+				<h2 className="w3-text-orange">Guess what's in the picture</h2>
+				<div className="output">
+				<label className="w3-text-blue"  htmlFor="timer">
 					Timer
-					<input type="text" id="timer" value={this.state.timer} />
+					<input className="timer" type="text" id="timer" value={this.state.timer} />
 				</label>
-				<label htmlFor="score">
+				<label className="w3-text-blue"  htmlFor="score">
 					Score
-					<input type="text" id="score" value={this.state.score} />
+					<input className="score"  type="text" id="score" value={this.props.score} />
 				</label>
+				</div>
 				<img src={this.state.currentImg} alt="" />
 				<input
+				className="answer"
 					onChange={this.updateUserAnswer}
 					type="text"
 					value={this.state.answer}
 					placeholder="Enter the name here !!"
 				/>
 				<button
+				className="w3-btn w3-blue" 
 					type="button"
 					onClick={this.compareInputWithAnswer}
 					disabled={this.state.disableTryButton}
@@ -72,6 +81,7 @@ class Main extends Component {
 					Try
 				</button>
 				<button
+				className="w3-btn w3-green" 
 					type="button"
 					onClick={this.start}
 					disabled={this.state.disableStartButton}
