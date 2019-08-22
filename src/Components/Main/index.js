@@ -3,7 +3,6 @@ import data from "../../data";
 
 class Main extends Component {
 	state = {
-		score: 0,
 		timer: 60,
 		currentImg: data[0].img,
 		currentName: data[0].name,
@@ -17,7 +16,7 @@ class Main extends Component {
 			disableTryButton: !prevState.disableTryButton
 		}));
 
-		setInterval(this.countDown, 100);
+		setInterval(this.countDown, 1000);
 	};
 	countDown = () => {
 		const { timer } = this.state;
@@ -25,18 +24,24 @@ class Main extends Component {
 			this.setState(prevState => ({
 				timer: prevState.timer - 1
 			}));
+		} else {
+			this.props.triggerGameOver();
 		}
 	};
 
 	compareInputWithAnswer = () => {
 		const { currentName, answer } = this.state;
 		if (currentName === answer) {
-			this.setState(prevState => ({
-				score: prevState.score + 1,
-				currentName: data[prevState.score + 1].name,
-				currentImg: data[prevState.score + 1].img,
-				answer: ""
-			}));
+			if (this.props.score + 1 === 10) {
+				this.props.triggerGameOver();
+			} else {
+				this.props.increaseScore();
+				this.setState({
+					currentName: data[this.props.score + 1].name,
+					currentImg: data[this.props.score + 1].img,
+					answer: ""
+				});
+			}
 		}
 	};
 
@@ -55,7 +60,7 @@ class Main extends Component {
 				</label>
 				<label htmlFor="score">
 					Score
-					<input type="text" id="score" value={this.state.score} />
+					<input type="text" id="score" value={this.props.score} />
 				</label>
 				<img src={this.state.currentImg} alt="" />
 				<input
