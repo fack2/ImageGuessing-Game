@@ -55,25 +55,35 @@ class Main extends Component {
 			<div className="main">
 				<h2 className="w3-text-orange">Guess what's in the picture</h2>
 				<div className="output">
-				<label className="w3-text-blue"  htmlFor="timer">
-					Timer
-					<input className="timer" type="text" id="timer" value={this.state.timer} />
-				</label>
-				<label className="w3-text-blue"  htmlFor="score">
-					Score
-					<input className="score"  type="text" id="score" value={this.props.score} />
-				</label>
+					<label className="w3-text-blue" htmlFor="timer">
+						Timer
+						<input
+							className="timer"
+							type="text"
+							id="timer"
+							value={this.state.timer}
+						/>
+					</label>
+					<label className="w3-text-blue" htmlFor="score">
+						Score
+						<input
+							className="score"
+							type="text"
+							id="score"
+							value={this.props.score}
+						/>
+					</label>
 				</div>
-				<img src={this.state.currentImg} alt="" />
+				<img className="mainImage" src={this.state.currentImg} alt="" />
 				<input
-				className="answer"
+					className="answer"
 					onChange={this.updateUserAnswer}
 					type="text"
 					value={this.state.answer}
 					placeholder="Enter the name here !!"
 				/>
 				<button
-				className="w3-btn w3-blue" 
+					className="w3-btn w3-blue"
 					type="button"
 					onClick={this.compareInputWithAnswer}
 					disabled={this.state.disableTryButton}
@@ -81,7 +91,7 @@ class Main extends Component {
 					Try
 				</button>
 				<button
-				className="w3-btn w3-green" 
+					className="w3-btn w3-green"
 					type="button"
 					onClick={this.start}
 					disabled={this.state.disableStartButton}
